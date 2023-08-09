@@ -1,48 +1,26 @@
-import './App.css';
-import { landingPageDTO, movie } from './movies/IndividualMovie.model';
-import ListMovies from './movies/ListMovies';
-import { useEffect, useState } from 'react';
+import { BrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router";
+import "./App.css";
+import LandingPage from "./LandingPage";
+import IndexGender from "./genders/IndexGender";
+import Menu from "./utils/Menu";
+import routes from "./Route-Config";
 
 function App() {
-
-  const [movies, setMovies] = useState<landingPageDTO>({
-
-
-  })
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-        setMovies({
-          cinemaMovies: [
-          {
-            id: 1, 
-            title: 'Spider-Man: far from Home', 
-            poster: 'https://upload.wikimedia.org/wikipedia/en/b/bd/Spider-Man_Far_From_Home_poster.jpg'
-          },
-          {
-            id: 2, 
-            title: 'Moana', 
-            poster: 'https://m.media-amazon.com/images/I/51g7Rl4Xa1L._SY291_BO1,204,203,200_QL40_FMwebp_.jpg'
-          }
-      
-        ],
-      premierMovies: [
-        {
-          id: 3, 
-          title: 'Soul', 
-          poster: 'https://lumiere-a.akamaihd.net/v1/images/p_soul_disneyplus_v2_20907_764da65d.jpeg'
-        }
-    
-      ]});
-    }, 1000);
-return () => clearTimeout(timerId);
-})
-
   return (
     <>
-    <h3>En Cartelera</h3>
-  <ListMovies movies={movies.cinemaMovies}/>
-  <h3>Próximos Estrenos</h3>
-  <ListMovies movies={movies.premierMovies}/>
+    <BrowserRouter>
+    <Menu />
+      <div className="container">
+        <Routes>
+          {routes.map(route => 
+          <Route key={route.path} 
+          path={route.path} 
+          element={<route.component/>} ></Route> )}
+        </Routes>
+      </div>
+    </BrowserRouter>
+      
     </>
   );
 }

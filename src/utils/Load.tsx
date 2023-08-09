@@ -1,4 +1,3 @@
-export default function Load()
-{
-    return <>Cargando desde el componente...</>
+export default function Load() {
+  return <>Cargando desde el componente...</>;
 }
