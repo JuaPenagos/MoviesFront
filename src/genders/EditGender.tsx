@@ -1,13 +1,16 @@
-import { useParams } from "react-router-dom"
+
+import FormGender from "./FormGender";
 
 export default function EditGender(){
-
-    const {id}: any = useParams();
-
     return(
         <>
         <h3>Editar Generos</h3>
-        <h4> El id es {id}</h4>
+        <FormGender model={{nombre: 'Accion'}}
+            onSubmit={async values => {
+                await new Promise(r => setTimeout(r,3000))
+                console.log(values)
+            }}/>
+
         </>
         
     )

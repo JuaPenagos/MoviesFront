@@ -1,16 +1,16 @@
+import FormGender from "./FormGender";
 
-
-import { useNavigate } from "react-router-dom";
-import Button from "../utils/Button";
 
 export default function CreateGender(){
-    const history = useNavigate();
 
     return(
         <>
             <h3>Crear Generos</h3>
-        <Button onClick={() => history("/generos")}>Salvar</Button>
+            <FormGender model={{nombre: ''}}
+            onSubmit={async values => {
+                await new Promise(r => setTimeout(r,3000))
+                console.log(values)
+            }}/>
         </>
-
     )
 }

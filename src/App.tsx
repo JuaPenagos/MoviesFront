@@ -5,6 +5,9 @@ import LandingPage from "./LandingPage";
 import IndexGender from "./genders/IndexGender";
 import Menu from "./utils/Menu";
 import routes from "./Route-Config";
+import configureValidations from "./Validations";
+
+configureValidations();
 
 function App() {
   return (
