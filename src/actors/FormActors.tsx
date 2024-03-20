@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import FormGroupText from "../utils/FormGroupText";
 import Button from "../utils/Button";
 import { Link } from "react-router-dom";
+import FormGroupDate from "../utils/FormGroupDate";
 
 export default function FomActors(props: formActorsProps)
 {
@@ -15,6 +16,7 @@ export default function FomActors(props: formActorsProps)
         nombre: Yup.string()
           .required("Este campo es requerido")
           .primeraLetraMayuscula(),
+          fechaNacimiento: Yup.date().nullable().required("Este Campo Es Requerido")
       })}
     >
 {(formikProps) => (
@@ -23,6 +25,7 @@ export default function FomActors(props: formActorsProps)
             campo="nombre"
             label="Nombre"
           />
+          <FormGroupDate label="Fecha Nacimiento" field="fechaNacimiento"/>
           <Button type="submit">
             Guardar
           </Button>
